@@ -14,3 +14,34 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register', 'IndexController@register');
+
+Route::get('testzzz', 'IndexController@testZZZ');
+
+
+Route::get('paul/{id}', 'IndexController@paul');
+
+Route::any('/user', function () {
+    return json_encode(['msg' => OK, 'data'=>[1,2,3], 'status' => 200]);
+});
+
+
+
+Route::get('aaa', function ()
+{
+    dd(bcmul(3,4));
+
+    $languages = ['php', 'python', 'scala','java'];
+
+    foreach ($languages as &$lang)
+        $lang = strtoupper($lang);
+
+//    echo $lang;
+
+    foreach ($languages as $lang) {
+//        print_r($languages);
+        echo $lang . "\n";
+    }
+});
+

@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+
+Route::middleware('api')->get('/user', function () {
+    return json_encode(['msg' => OK, 'data'=>[1,2,3], 'status' => 200]);
 });
