@@ -2,6 +2,10 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ExecCommand;
+use App\Console\Commands\ExecCommand2;
+use App\Console\Commands\PaulNohup;
+use App\Console\Commands\Tesssst;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        ExecCommand::class,
+        ExecCommand2::class,
+        PaulNohup::class,
+        Tesssst::class
     ];
 
     /**

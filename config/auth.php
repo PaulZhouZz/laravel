@@ -99,4 +99,6 @@ return [
         ],
     ],
 
+    'change_price_hour'     => [11]
+
 ];

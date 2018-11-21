@@ -26,11 +26,11 @@ Route::any('/user', function () {
     return json_encode(['msg' => OK, 'data'=>[1,2,3], 'status' => 200]);
 });
 
-
+Route::get('testwk', 'IndexController@testwk');
 
 Route::get('aaa', function ()
 {
-    dd(bcmul(3,4));
+    return View::make('paul');
 
     $languages = ['php', 'python', 'scala','java'];
 

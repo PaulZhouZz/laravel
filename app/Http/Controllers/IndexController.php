@@ -156,4 +156,42 @@ class IndexController extends Controller
             $_data
         );
     }
+
+
+    public function testwk() {
+        $converter = new \wkhtmltox\PDF\Converter([
+            "out" => "test.pdf"
+        ]);
+
+        $str = <<<'EOD'
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <style>
+                @font-face {
+                    font-family: myFirstFont;
+                }
+            
+                body {
+                    font-family: myFirstFont;
+                }
+            
+            </style>
+            <body>
+                aljdakfjskfaklfkldjaskfljkajfksdjflkajlk
+            </body>
+            </html>
+EOD;
+
+        $converter->add(new \wkhtmltox\PDF\Object(
+            $str));
+
+        dd($converter->convert());
+    }
+
+
 }
