@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\FinanceReport;
 use App\Models\FinanceReportDetail;
 use App\Models\RoloUsersModel;
+use App\Models\User;
+use App\Models\Users;
 use App\Service\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class IndexController extends Controller
 {
@@ -24,6 +28,22 @@ class IndexController extends Controller
     {
         $this->userService->register($this->request->all());
         return 123;
+    }
+
+
+    public function showProfile($id) {
+
+        $values = Redis::get('name');
+
+        dd($values);
+
+        return view('user.profile', ['user' => $user]);
+    }
+
+    public function setCache($id) {
+//        Cache::store('database')->put('key', $id, 10);
+        Redis::set('name', $id);
+        Cache::store('redis')->put('zsl', "i'm paul", 10);
     }
 
 
@@ -45,9 +65,9 @@ class IndexController extends Controller
 
     public function testZZZ()
     {
-        $res = RoloUsersModel::where('role_id', 7)->get(['user_id'])->toArray();
-
-        dd($res);
+        $users = Users::where('votes', '>', 5000)->get();
+        $users->each->makeAsVip();
+        dd($users->toArray());
     }
 
 

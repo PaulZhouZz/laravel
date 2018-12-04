@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::get('/redis/{id}', 'IndexController@showProfile');
+Route::get('/setC/{id}', 'IndexController@setCache');
+
 Route::get('/register', 'IndexController@register');
 
 Route::get('testzzz', 'IndexController@testZZZ');
