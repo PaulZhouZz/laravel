@@ -23,7 +23,7 @@ class IndexController extends Controller
     /**
      * 测试使用repository 处理需要和数据库交互的非逻辑业务代码
      *
-     * @param UsersRepository $userReposotory
+     * @param UsersRepository $usersRepository
      */
     public function __construct(UsersRepository $usersRepository)
     {
