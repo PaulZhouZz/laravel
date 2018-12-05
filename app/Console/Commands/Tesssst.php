@@ -12,7 +12,7 @@ class Tesssst extends Command
      *
      * @var string
      */
-    protected $signature = 'Teee';
+    protected $signature = 'Teee {date?}';
 
     /**
      * The console command description.
@@ -40,21 +40,23 @@ class Tesssst extends Command
     {
         date_default_timezone_set('Pacific/Pitcairn');
 
-        print_r(config('auth.change_price_hour'));
+        $argv = $this->argument('date');
+        echo $argv . "\n";
 
-        \App\Models\Tesssst::addData([
-            'date' => '2019-1002-22',
-            'ad_config_id' => '2',
-            'ad_type' => '2',
-            'ad_place' => '2',
-            'channel' => '2',
-            'percent_info' => '2',
-            'floor_ecpm_info' => '2',
-            'weight' => '2',
-            'earnings' => '2',
-            'unique_id' => '2',
-        ]);
+//        print_r(config('auth.change_price_hour'));
 
-        Log::info(date('Y-m-d H:i:s') . 'Loggggggggggggggggggggggggggggg');
+//        \App\Models\Tesssst::addData([
+//            'date' => '2019-1002-22',
+//            'ad_config_id' => '2',
+//            'ad_type' => '2',
+//            'ad_place' => '2',
+//            'channel' => '2',
+//            'percent_info' => '2',
+//            'floor_ecpm_info' => '2',
+//            'weight' => '2',
+//            'earnings' => '2',
+//            'unique_id' => '2',
+//        ]);
+
     }
 }

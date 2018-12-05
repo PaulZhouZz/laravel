@@ -11,24 +11,48 @@ use App\Service\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
+use App\Repositories\UsersRepository;
 
 class IndexController extends Controller
 {
 
-    public $request;
-    protected $userService;
+    /** @var UsersRepository 注入的UserRepository */
+    private $usersRepository;
 
-    public function __construct(Request $request, UserService $service)
+
+    /**
+     * 测试使用repository 处理需要和数据库交互的非逻辑业务代码
+     *
+     * @param UsersRepository $userReposotory
+     */
+    public function __construct(UsersRepository $usersRepository)
     {
-        $this->request = $request;
-        $this->userService = $service;
+        $this->usersRepository = $usersRepository;
     }
 
-    public function register()
+    public function index()
     {
-        $this->userService->register($this->request->all());
-        return 123;
+        dd($this->usersRepository->getAgeLargeThan(5000));
     }
+
+
+
+
+
+//    /** @var Request $userService 将服务注册到Controller中 */
+//    public $request;
+//    protected $userService;
+//
+//    public function __construct(Request $request, UserService $service)
+//    {
+//        $this->request = $request;
+//        $this->userService = $service;
+//    }
+//    public function register()
+//    {
+//        $this->userService->register($this->request->all());
+//        return 123;
+//    }
 
 
     public function showProfile($id) {
