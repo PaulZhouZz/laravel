@@ -9,6 +9,23 @@
     <title>Document</title>
 </head>
 <body>
-    <span style="color: red;" class="glyphicon glyphicon-arrow-up"></span>
+{{--普通的blade写法--}}
+    {{--@foreach($users as $user)--}}
+        {{--<div class="col-lg-12">--}}
+            {{--<h2 class="d-inline ">@if($user->is_vip) {{ 'vip' }} @else {{ 'normal user' }} @endif</h2>--}}
+            {{--<h2 class="d-inline">{{ $user->name }}</h2>--}}
+            {{--<hr>--}}
+        {{--</div>--}}
+    {{--@endforeach--}}
+
+{{--presenter 写法--}}
+@inject('UsersPresenter', 'App\Presenters\UsersPresenter')
+@foreach($users as $user)
+    <div>
+        <h2>{{ $UsersPresenter->judgeIfVip($user->is_vip, $user->name) }}</h2>
+        <h2>{{ $user->votes }}</h2>
+        <hr>
+    </div>
+@endforeach
 </body>
 </html>

@@ -32,7 +32,10 @@ class IndexController extends Controller
 
     public function index()
     {
-        dd($this->usersRepository->getAgeLargeThan(5000));
+        $users = $this->usersRepository->getAgeLargeThan(4000);
+
+        return view('paul', compact('users'));
+//        dd($this->usersRepository->getAgeLargeThan(5000));
     }
 
 
