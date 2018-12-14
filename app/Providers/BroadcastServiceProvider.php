@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Users;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
 
@@ -14,8 +15,13 @@ class BroadcastServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Broadcast::routes();
+        Broadcast::channel('order.*', function ($user, $id) {
+            return $user->id === Users::findOrFail($id)->id;
+        });
 
-        require base_path('routes/channels.php');
+
+//        Broadcast::routes();
+
+//        require base_path('routes/channels.php');
     }
 }

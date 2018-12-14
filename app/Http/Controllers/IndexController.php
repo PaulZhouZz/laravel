@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderShipped;
 use App\Models\FinanceReport;
 use App\Models\FinanceReportDetail;
 use App\Models\RoloUsersModel;
@@ -32,10 +33,14 @@ class IndexController extends Controller
 
     public function index()
     {
-        $users = $this->usersRepository->getAgeLargeThan(4000);
+//        $users = $this->usersRepository->getAgeLargeThan(4000);
 
-        return view('paul', compact('users'));
+        $users = Users::findOrFail(20);
+        event(new OrderShipped($users));
+
+//        return view('paul', compact('users'));
 //        dd($this->usersRepository->getAgeLargeThan(5000));
+        return view('zzz');
     }
 
 
