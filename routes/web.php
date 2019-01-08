@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('index', 'IndexController@index');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('notify', 'IndexController@testNotify');
+Route::get('roll', 'IndexController@testRoll');
 
 
 

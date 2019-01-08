@@ -9,7 +9,9 @@ use App\Models\RoloUsersModel;
 use App\Models\User;
 use App\Models\Users;
 use App\Service\UserService;
+use Facebook\WebDriver\Cookie;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 use App\Repositories\UsersRepository;
@@ -44,6 +46,13 @@ class IndexController extends Controller
     }
 
 
+    public function testNotify() {
+        Users::noti();
+    }
+
+    public function testNotifyA() {
+
+    }
 
 
 
