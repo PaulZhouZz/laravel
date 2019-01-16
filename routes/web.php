@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('aa', 'IndexController@aa');
+
+Route::get('bb', 'IndexController@bb');
+
 Route::get('index', 'IndexController@index');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

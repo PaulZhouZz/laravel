@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\OrderShipped;
 use App\Models\FinanceReport;
 use App\Models\FinanceReportDetail;
+use App\Models\Post;
 use App\Models\RoloUsersModel;
 use App\Models\User;
 use App\Models\Users;
@@ -252,6 +253,23 @@ EOD;
             $str));
 
         dd($converter->convert());
+    }
+
+
+    public function aa() {
+        $post = Post::all();
+        $res = $post->map(function ($post) {
+            return $post->author->name;
+        });
+        dd($res);
+    }
+
+    public function bb() {
+        $post = Post::with('author')->get();
+        $res = $post->map(function ($post) {
+            return $post->author->name;
+        });
+        dd($res);
     }
 
 
