@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\es;
 use App\Console\Commands\ExecCommand;
 use App\Console\Commands\ExecCommand2;
 use App\Console\Commands\PaulNohup;
@@ -20,7 +21,8 @@ class Kernel extends ConsoleKernel
         ExecCommand::class,
         ExecCommand2::class,
         PaulNohup::class,
-        Tesssst::class
+        Tesssst::class,
+        es::class,
     ];
 
     /**

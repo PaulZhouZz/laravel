@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('aa', 'IndexController@aa');
+Route::any('es', 'IndexController@es');
+Route::get('es_get', 'IndexController@esGet');
+Route::get('es_search', 'IndexController@esSearch');
+Route::get('es_delete', 'IndexController@esDelete');
 
 Route::get('bb', 'IndexController@bb');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Component\Esearch\SearchClient;
 use App\Events\OrderShipped;
 use App\Models\FinanceReport;
 use App\Models\FinanceReportDetail;
@@ -44,6 +45,54 @@ class IndexController extends Controller
 //        return view('paul', compact('users'));
 //        dd($this->usersRepository->getAgeLargeThan(5000));
         return view('zzz');
+    }
+
+
+    public function es() {
+        $client = SearchClient::getInstance();
+        $params = [
+            'index' => 'zsl',
+            'type' => 'paul',
+
+            'body' => [
+                'testField' => 'abc'
+            ]
+        ];
+
+        $response = $client->index($params);
+        return $response;
+    }
+
+    public function esSearch()
+    {
+        $client = SearchClient::getInstance();
+        $params = [
+            'index' => 'zsl',
+            'type' => 'paul',
+            'body' => [
+                'query' => [
+                    'match' => [
+                        'testField' => 'abc'
+                    ]
+                ]
+            ]
+        ];
+
+        $response = $client->search($params);
+        return $response;
+    }
+
+    public function esDelete()
+    {
+        $client = SearchClient::getInstance();
+        $params = [
+            'index' => 'zsl',
+            'type' => 'paul',
+            'id' => 'wzq3VWgBUBegGYIS9ELv'
+        ];
+
+        $response = $client->delete($params);
+        return $response;
     }
 
 
